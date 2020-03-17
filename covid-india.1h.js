@@ -30,5 +30,5 @@ https.get(apiURL, res => {
     });
   })
   .on("error", err => {
-    reject("Error: " + err.message);
+    console.log("Error: " + err.message);
   });
