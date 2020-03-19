@@ -11,6 +11,7 @@
 
 const apiURL = 'https://api.rootnet.in/covid19-in/stats/latest';
 const https = require('https');
+const options = {month: 'long', day: 'numeric' };
 https.get(apiURL, res => {
     let data = "";
     res.on("data", chunk => {
@@ -26,6 +27,10 @@ https.get(apiURL, res => {
       console.log("Deaths:", apiData.data.summary.deaths);
       console.log("---");
       console.log("Official Helpline | href=https://www.mohfw.gov.in/");
+      let day = new Date(apiData.lastRefreshed).toLocaleString('en-GB', options)
+      let temp = new Date(apiData.lastRefreshed).toLocaleString().split(',')[1]
+      let time = temp.slice(0,6) + " " + temp.slice(temp.length-2)
+      console.log("Data refreshed:", time + ", " + day)
     });
   })
   .on("error", err => {
