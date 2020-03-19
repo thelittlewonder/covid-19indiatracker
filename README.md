@@ -2,10 +2,10 @@
 [Bitbar](https://bitbar.com/) Plugin to track Covid-19 cases in India
 
 ### Auto update every hour
-![](https://github.com/thelittlewonder/covid-19indiatracker/blob/master/media/minimised-preview.png?raw=true)
+![](https://github.com/thelittlewonder/covid-19indiatracker/blob/master/media/minimisedpreview.png?raw=true)
 
 ### Data fetched from [Ministry of Health and Family Welfare](https://www.mohfw.gov.in/)
-![](https://github.com/thelittlewonder/covid-19indiatracker/blob/master/media/fullscreen-preview.png?raw=true)
+![](https://github.com/thelittlewonder/covid-19indiatracker/blob/master/media/fullscreenpreview.png?raw=true)
 
 ### How to Install
 **1. Installing BitBar**
