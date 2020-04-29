@@ -23,8 +23,8 @@ https.get(apiURL, res => {
       console.log(`${apiData.data.summary.total} | templateImage=${icon}`);
       console.log('---')
       console.log("Active Cases:", (apiData.data.summary.total-apiData.data.summary.discharged));
-      console.log("Recovered:", apiData.data.summary.discharged);
-      console.log("Deaths:", apiData.data.summary.deaths);
+      console.log("Recovered:", apiData.data.summary.discharged + ' (' + ((apiData.data.summary.discharged/apiData.data.summary.total)*100).toFixed(2) + '%)');
+      console.log("Deaths:", apiData.data.summary.deaths + ' (' + ((apiData.data.summary.deaths/apiData.data.summary.total)*100).toFixed(2) + '%)');
       console.log("---");
       console.log("Official Helpline | href=https://www.mohfw.gov.in/");
       let day = new Date(apiData.lastOriginUpdate).toLocaleString('en-GB', options)
