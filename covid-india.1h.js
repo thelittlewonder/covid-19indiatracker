@@ -29,7 +29,11 @@ https.get(apiURL, res => {
       console.log("Official Helpline | href=https://www.mohfw.gov.in/");
       let day = new Date(apiData.lastOriginUpdate).toLocaleString('en-GB', options)
       let temp = new Date(apiData.lastOriginUpdate).toLocaleString().split(',')[1]
-      let time = temp.slice(0,6) + " " + temp.slice(temp.length-2)
+      let stamp = temp.slice(0,6)
+      if(stamp.substr(-1)==':'){
+        stamp = stamp.slice(0,-1)
+      }
+      let time =  stamp + " " + temp.slice(temp.length-2)
       console.log("Data refreshed:", time + ", " + day)
     });
   })
