@@ -20,11 +20,11 @@ https.get(apiURL, res => {
     res.on("end", () => {
       let apiData = JSON.parse(data);
       let icon = 'iVBORw0KGgoAAAANSUhEUgAAABIAAAASCAYAAAEhyb7BAAAAAXNSR0IArs4c6QAAAdlJREFUOBGFkzFLHFEQgFeFeBowalAJnB4kIFpIuN+QcEmRziJ10mhpGkGwtEkgfQqv8RdYCkqKgHiNZcQmVa46MCoREaIx3/d8b9nDjQ58O/PmzZudfTObZTfySNUDGp+gAkE2kqFu9PG4ho6xz+BcI4k7U/BARwOq8BnceAJdUiuullkYlY1E4yw59P6G1xCOPMZoQak8xGuKv+DJTfBAEDeVY3BzAUx9CXlGT1qNm6kI3+2BIBZhWh1/otbW/x5KZRhvs3QnOivoCzCTJQTpTUbUH9D9MAhfIQ/EzpZgDn7ARzCT3VGHVy9i7EWHzqfRfht1HZ2NxsU4ej3a81G/QwdZ4WmGL3AAY3AEv2AWgpzyNKhIm/XLsFt4GGjG57AKtwLw3Sl+2DZY+y6YzOE0cd587P+KV/cTirdzxbpYui03YQ1KZQiv978GHvwG3uIheFGTkBJaoT9ILrbfCtwwgU1MwQamVnzHnijseWdBHDDvIM1QqsBJMIHN3gf9HbBlW3HdQnvxbyCMipdooHcwAH5CqiYlcCimwb7ra8MJvIBc7IJDasAOVMGZ9BMcu1SB+w6Pf2ZXAtZBUhvtQkrooYSf4HhawQzcK7UY8QrdjHYdHe4grkvVP0xXjBIOIZS9AAAAAElFTkSuQmCC';
-      console.log(`${new Intl.NumberFormat('en-IN').format(apiData.data['unofficial-summary'][0].total )} | templateImage=${icon}`);
+      console.log(`${new Intl.NumberFormat('en-IN').format(apiData.data['summary'].total-apiData.data['summary'].discharged-apiData.data['summary'].deaths)} | templateImage=${icon}`);
       console.log('---')
-      console.log("Active Cases:", new Intl.NumberFormat('en-IN').format(apiData.data['unofficial-summary'][0].active));
-      console.log("Recovered:", new Intl.NumberFormat('en-IN').format(apiData.data['unofficial-summary'][0].recovered) + ' (' + ((apiData.data['unofficial-summary'][0].recovered/apiData.data['unofficial-summary'][0].total)*100).toFixed(2) + '%)');
-      console.log("Deaths:", new Intl.NumberFormat('en-IN').format(apiData.data['unofficial-summary'][0].deaths) + ' (' + ((apiData.data['unofficial-summary'][0].deaths/apiData.data['unofficial-summary'][0].total)*100).toFixed(2) + '%)');
+      console.log("Total Cases:", new Intl.NumberFormat('en-IN').format(apiData.data['summary'].total));
+      console.log("Recovered:", new Intl.NumberFormat('en-IN').format(apiData.data['summary'].discharged) + ' (' + ((apiData.data['summary'].discharged/apiData.data['summary'].total)*100).toFixed(2) + '%)');
+      console.log("Deaths:", new Intl.NumberFormat('en-IN').format(apiData.data['summary'].deaths) + ' (' + ((apiData.data['summary'].deaths/apiData.data['summary'].total)*100).toFixed(2) + '%)');
       console.log("---");
       console.log("Official Helpline | href=https://www.mohfw.gov.in/");
       let day = new Date(apiData.lastOriginUpdate).toLocaleString('en-GB', options)
@@ -34,7 +34,7 @@ https.get(apiURL, res => {
         stamp = stamp.slice(0,-1)
       }
       let time =  stamp + " " + temp.slice(temp.length-2)
-      console.log("Data refreshed:", time + ", " + day)
+      console.log("Data updated:", time + ", " + day)
     });
   })
   .on("error", err => {
